@@ -1,0 +1,54 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{% static 'Vehicle_App/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent_list">
+        <div class="div1_list">
+            <div class="logo">
+                <img src="{% static 'Vehicle_App/images/logo-big.png'%}"alt="">
+            </div>
+            <div class="navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="{% url 'Vehicle_App:vehicle_list' %}">Vehicle List</a></li>
+                    <li><a href="{% url 'Vehicle_App:vehicle_creation' %}">Add Vehicle</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="div2_list">
+            <div class="top-logo">
+                <img src="{% static 'Vehicle_App/images/logo.jpg'%}" alt="">
+            </div>
+            <div class="vehicle-list-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Save">
+                    <div class="button-index">
+					<a  href="{% url 'Vehicle_App:vehicle_list'  %}"><button >Cancel</button></a>
+					</div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+

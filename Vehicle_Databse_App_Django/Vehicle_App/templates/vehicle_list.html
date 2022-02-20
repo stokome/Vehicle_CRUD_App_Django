@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Vehicle_App/css/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent_list">
+        <div class="div1_list">
+            <div class="logo">
+                <img src="{% static 'Vehicle_App/images/logo-big.png'%}"alt="">
+            </div>
+            <div class="navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="{% url 'Vehicle_App:vehicle_list' %}">Vehicle List</a></li>
+                    <li><a href="{% url 'Vehicle_App:vehicle_creation' %}">Add Vehicle</a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="div2_list">
+            <div class="top-logo">
+                <img src="{% static 'Vehicle_App/images/logo.jpg'%}" alt="">
+            </div>
+            <div class="vehicle-list-container">
+                <h1>Vehicle List</h1>
+
+                <ul id="display">
+
+                     {% if vehicles %}
+                                <ul>
+                                {% for v in vehicles %}
+                                    <li>Vehicle: <a href="/{{ v.id }}/">{{ v.vehicle_number }}</a> {{v.vehicle_model}}</li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p>No vehicles are available.</p>
+                            {% endif %}
+
+                </ul>
+               <!-- <script>
+                    $(document).ready(function(){
+                        setInterval(function(){
+                            $.ajax({
+                                type :'GET',
+                                url : "{% url 'Vehicle_App:vehicle_list' %}",
+                                success: function(response){
+                                    //console.log(response);
+                                    $("#display").empty();
+                                    for(var key in response.vehicles)
+                                    {
+                                        var temp = "<li>"+response.vehicles[key].vehicle_model+"</li>";
+                                        $("#display").append(temp);
+                                    }
+                                },
+                                error: function(response){
+                                    alert("an error occured");
+                                }
+                            });
+                        },1000);
+                    });
+                </script>-->
+
+                           
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+

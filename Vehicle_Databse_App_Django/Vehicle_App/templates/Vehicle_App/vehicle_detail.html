@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Vehicle_App/css/style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="parent_list">
+        <div class="div1_list">
+            <div class="logo">
+                <img src="{% static 'Vehicle_App/images/logo-big.png'%}" alt="">
+            </div>
+            <div class="navigation">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="{% url 'Vehicle_App:vehicle_list' %}">Vehicle List</a></li>
+                    <li><a href="{% url 'Vehicle_App:vehicle_creation' %}">Add Vehicle</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="div2_list">
+            <div class="top-logo">
+                <img src="{% static 'Vehicle_App/images/logo.jpg'%}" alt="">
+            </div>
+            <div class="veh-title">{{object.vehicle_model}}</div>
+            <div class="parent">
+                <div class="div1 style-grid ">Camera 1</div>
+                <div class="div2 style-grid ">Camera 2</div>
+                <div class="div3 style-grid ">
+                    Static Map 
+                    <img src= "{% static 'Images/dummy.jfif'%} " style="height: 200px;width: 700px;">
+                </div>
+                <div class="div4 style-grid "> Engine Status : <br>{{object.engine  }} </div>
+                <div class="div5 style-grid ">Fuel Level :<br>{{object.fuel  }} </div>
+                <div class="div6 style-grid ">Temperature :<br>{{object.tempreture  }}</div>
+                <div class="div7 style-grid ">Average Speed :<br>{{object.avg_speed  }}</div>
+                <div class="div8 style-grid ">Speed :<br>{{object.speed  }}</div>
+                <div class="div9 ">
+                    <div class="button1">OFF</div>
+                    <div class="button2">ON</div>
+                </div>
+            </div>
+            <div class="button-index">
+                <a  href="{% url 'Vehicle_App:vehicle_update' vehicle.id  %}"><button >Update</button></a>
+                <a  href="{% url 'Vehicle_App:vehicle_delete' vehicle.id  %}"><button >Delete</button></a>
+                
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
